@@ -76,6 +76,6 @@ $w_i = w_i - \eta \cdot \frac{\partial \text{loss}}{\partial w_i}$
 
 $b_i = b_i - \eta \cdot \frac{\partial \text{loss}}{\partial b_i}$
 
-$w_i = w_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial w_{i+1}}$
+$w_{i+1} = w_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial w_{i+1}}$
 
-$b_i = b_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial b_{i+1}}$
+$b_{i+1} = b_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial b_{i+1}}$
