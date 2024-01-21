@@ -60,22 +60,22 @@ $\text{loss} = \frac{(\text{target} - \text{output})^2}{2}$
 During the backward pass, we calculate the gradient of the loss function with respect to each weight and bias:
 
 
-$\frac{\partial \text{loss}}{\partial w_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot a_1$
+$\frac{\partial \text{loss}}{\partial w_{i+1}} = (\text{output} - \text{target}) \cdot \sigma'(z_{i+i}) \cdot a_i$
 
-$\frac{\partial \text{loss}}{\partial b_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2)$
+$\frac{\partial \text{loss}}{\partial b_{i+1}} = (\text{output} - \text{target}) \cdot \sigma'(z_{i+1})$
 
-$\frac{\partial \text{loss}}{\partial w_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) \cdot \text{input}$
+$\frac{\partial \text{loss}}{\partial w_{i}} = (\text{output} - \text{target}) \cdot \sigma'(z_{i+1}) \cdot w_{i+1} \cdot \sigma'(z_i) \cdot \text{input}$
 
-$\frac{\partial \text{loss}}{\partial b_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1)$
+$\frac{\partial \text{loss}}{\partial b_{i}} = (\text{output} - \text{target}) \cdot \sigma'(z_{i+1}) \cdot w_{i+1} \cdot \sigma'(z_{i})$
 
 
 ## Weight Update
 The weights and biases are updated using gradient descent, as follows:
 
-$w_1 = w_1 - \eta \cdot \frac{\partial \text{loss}}{\partial w_1}$
+$w_i = w_i - \eta \cdot \frac{\partial \text{loss}}{\partial w_i}$
 
-$b_1 = b_1 - \eta \cdot \frac{\partial \text{loss}}{\partial b_1}$
+$b_i = b_i - \eta \cdot \frac{\partial \text{loss}}{\partial b_i}$
 
-$w_2 = w_2 - \eta \cdot \frac{\partial \text{loss}}{\partial w_2}$
+$w_i = w_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial w_{i+1}}$
 
-$b_2 = b_2 - \eta \cdot \frac{\partial \text{loss}}{\partial b_2}$
+$b_i = b_{i+1} - \eta \cdot \frac{\partial \text{loss}}{\partial b_{i+1}}$
