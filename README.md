@@ -25,61 +25,55 @@ With parameters:
 - the updated state $i +1$
 - weight $w$
 - bias $b$
-- sigmoid activation $\sigma$
+- sigmoid activation $\sigma = \frac{1}{1 + e^{-x}}$
 - loss as mean-squared-error (MSE)
 - learning rate $\eta$
 
 Then we describe the network across states in a fairly straightforward manner:
 
-Output = $\sigma(w_{i+1} \cdot \sigma(w_i \cdot \text{input} + b_i)) + b_{i+1}$
+Output = $\sigma(w_{i+1} \cdot \sigma(w_i \cdot \text{input} + b_i) + b_{i+1})$
 
 Loss = $\frac{(\text{target - output})^2}{2}$
 
-$w = w - \eta \cdot \frac{\partial \text{text}}{\partial w} $
+$w = w - \eta \cdot \frac{\partial \text{loss}}{\partial w} $
 
 
 ## Forward Pass
 The forward pass involves computing the output of the network given an input. The process is as follows:
 
+$z_i = w_i \cdot \text{input} + b_i$
 
-$$ z_1 = w_1 \cdot \text{input} + b_1 $$
+$a_i = \sigma(z_i)$
 
-$$ a_1 = \sigma(z_1) $$
+$z_{i+1} = w_{i+1} \cdot a_i + b_{i+1}$
 
-$$ z_2 = w_2 \cdot a_1 + b_2 $$
-
-$$ \text{output} = \sigma(z_2) $$
-
-Here, $w_1$ and $w_2$ are the weights, $b_1$ and $b_2$ are the biases, and $\sigma$ is the sigmoid function.
+$\text{output} = \sigma(z_{i+1})$
 
 ## Loss Calculation
 The loss function used is the mean squared error, calculated as:
 
-$$
-\text{loss} = \frac{1}{2}(\text{target} - \text{output})^2
-$$
+$\text{loss} = \frac{(\text{target} - \text{output})^2}{2}$
 
 ## Backward Pass (Gradient Calculation)
 During the backward pass, we calculate the gradient of the loss function with respect to each weight and bias:
 
 
-$$ \frac{\partial \text{loss}}{\partial w_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot a_1 $$
+$\frac{\partial \text{loss}}{\partial w_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot a_1$
 
-$$ \frac{\partial \text{loss}}{\partial b_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) $$
+$\frac{\partial \text{loss}}{\partial b_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2)$
 
-$$ \frac{\partial \text{loss}}{\partial w_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) \cdot \text{input} $$
+$\frac{\partial \text{loss}}{\partial w_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) \cdot \text{input}$
 
-$$ \frac{\partial \text{loss}}{\partial b_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) $$
+$\frac{\partial \text{loss}}{\partial b_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1)$
 
 
 ## Weight Update
 The weights and biases are updated using gradient descent, as follows:
 
-$$
-w_1 = w_1 - \eta \cdot \frac{\partial \text{loss}}{\partial w_1} \\
-b_1 = b_1 - \eta \cdot \frac{\partial \text{loss}}{\partial b_1} \\
-w_2 = w_2 - \eta \cdot \frac{\partial \text{loss}}{\partial w_2} \\
-b_2 = b_2 - \eta \cdot \frac{\partial \text{loss}}{\partial b_2}
-$$
+$w_1 = w_1 - \eta \cdot \frac{\partial \text{loss}}{\partial w_1}$
 
-Here, $\eta$ is the learning rate.
+$b_1 = b_1 - \eta \cdot \frac{\partial \text{loss}}{\partial b_1}$
+
+$w_2 = w_2 - \eta \cdot \frac{\partial \text{loss}}{\partial w_2}$
+
+$b_2 = b_2 - \eta \cdot \frac{\partial \text{loss}}{\partial b_2}$
