@@ -30,7 +30,7 @@ z_2 = w_2 \cdot a_1 + b_2 \\
 \text{output} = \sigma(z_2)
 $$
 
-Here, \( w_1 \) and \( w_2 \) are the weights, \( b_1 \) and \( b_2 \) are the biases, and \( \sigma \) is the sigmoid function.
+Here, $w_1$ and $w_2$ are the weights, $b_1$ and $b_2$ are the biases, and $\sigma$ is the sigmoid function.
 
 ## Loss Calculation
 The loss function used is the mean squared error, calculated as:
@@ -62,4 +62,4 @@ w_2 = w_2 - \eta \cdot \frac{\partial \text{loss}}{\partial w_2} \\
 b_2 = b_2 - \eta \cdot \frac{\partial \text{loss}}{\partial b_2}
 $$
 
-Here, $ \eta $ is the learning rate.
+Here, $\eta$ is the learning rate.
