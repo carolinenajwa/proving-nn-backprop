@@ -37,6 +37,8 @@ Loss = $\frac{(\text{target - output})^2}{2}$
 
 $w = w - \eta \cdot \frac{\partial \text{loss}}{\partial w} $
 
+$b = b - \eta \cdot \frac{\partial \text{loss}}{\partial b} $
+
 
 ## Forward Pass
 The forward pass involves computing the output of the network given an input. The process is as follows:
