@@ -20,7 +20,7 @@ The following will be implemented:
 
 # Neural Network Training Process: One Neuron Per Layer
 
-With parameters:
+We describe a multi-layer perceptron with parameters:
 - the initial state $i$
 - the updated state $i +1$
 - weight $w$
