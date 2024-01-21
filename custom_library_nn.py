@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1CCiIgeEgyYKtU1EiFI6sdS_QF6rXU7zp
 """
 
-!pip install tensorflow
-
 import unittest
 import numpy as np
 import tensorflow as tf
