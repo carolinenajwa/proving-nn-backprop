@@ -43,8 +43,11 @@ The forward pass involves computing the output of the network given an input. Th
 
 
 $$ z_1 = w_1 \cdot \text{input} + b_1 $$
+
 $$ a_1 = \sigma(z_1) $$
+
 $$ z_2 = w_2 \cdot a_1 + b_2 $$
+
 $$ \text{output} = \sigma(z_2) $$
 
 Here, $w_1$ and $w_2$ are the weights, $b_1$ and $b_2$ are the biases, and $\sigma$ is the sigmoid function.
