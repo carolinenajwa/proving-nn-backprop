@@ -20,9 +20,6 @@ The following will be implemented:
 
 # Neural Network Training Process: One Neuron Per Layer
 
-## Introduction
-This document outlines the training process for a simple neural network with one neuron per layer. The network includes one input neuron, one hidden neuron, and one output neuron using a sigmoid activation function.
-
 ## Forward Pass
 The forward pass involves computing the output of the network given an input. The process is as follows:
 
