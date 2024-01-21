@@ -20,6 +20,24 @@ The following will be implemented:
 
 # Neural Network Training Process: One Neuron Per Layer
 
+With parameters:
+- the initial state $i$
+- the updated state $i +1$
+- weight $w$
+- bias $b$
+- sigmoid activation $\sigma$
+- loss as mean-squared-error (MSE)
+- learning rate $\eta$
+
+Then we describe the network across states in a fairly straightforward manner:
+
+Output = $\sigma(w_{i+1} \cdot \sigma(w_i \cdot \text{input} + b_i)) + b_{i+1}$
+
+Loss = $\frac{(\text{target - output})^2}{2}$
+
+$w = w - \eta \cdot \frac{\partial \text{text}}{\partial w} $
+
+
 ## Forward Pass
 The forward pass involves computing the output of the network given an input. The process is as follows:
 
