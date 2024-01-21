@@ -18,3 +18,51 @@ The following will be implemented:
 - [ ] Number-theoretic transform (NTT) or Fast-fourier transform (FFT)
 - [ ] FRI protocol as the core of the argument scheme
 
+# Neural Network Training Process: One Neuron Per Layer
+
+## Introduction
+This document outlines the training process for a simple neural network with one neuron per layer. The network includes one input neuron, one hidden neuron, and one output neuron using a sigmoid activation function.
+
+## Forward Pass
+The forward pass involves computing the output of the network given an input. The process is as follows:
+
+$$
+z_1 = w_1 \cdot \text{input} + b_1 \\
+a_1 = \sigma(z_1) \\
+z_2 = w_2 \cdot a_1 + b_2 \\
+\text{output} = \sigma(z_2)
+$$
+
+Here, \( w_1 \) and \( w_2 \) are the weights, \( b_1 \) and \( b_2 \) are the biases, and \( \sigma \) is the sigmoid function.
+
+## Loss Calculation
+The loss function used is the mean squared error, calculated as:
+
+$$
+\text{loss} = \frac{1}{2}(\text{target} - \text{output})^2
+$$
+
+## Backward Pass (Gradient Calculation)
+During the backward pass, we calculate the gradient of the loss function with respect to each weight and bias:
+
+
+$$ \frac{\partial \text{loss}}{\partial w_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot a_1 $$
+
+$$ \frac{\partial \text{loss}}{\partial b_2} = (\text{output} - \text{target}) \cdot \sigma'(z_2) $$
+
+$$ \frac{\partial \text{loss}}{\partial w_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) \cdot \text{input} $$
+
+$$ \frac{\partial \text{loss}}{\partial b_1} = (\text{output} - \text{target}) \cdot \sigma'(z_2) \cdot w_2 \cdot \sigma'(z_1) $$
+
+
+## Weight Update
+The weights and biases are updated using gradient descent, as follows:
+
+$$
+w_1 = w_1 - \eta \cdot \frac{\partial \text{loss}}{\partial w_1} \\
+b_1 = b_1 - \eta \cdot \frac{\partial \text{loss}}{\partial b_1} \\
+w_2 = w_2 - \eta \cdot \frac{\partial \text{loss}}{\partial w_2} \\
+b_2 = b_2 - \eta \cdot \frac{\partial \text{loss}}{\partial b_2}
+$$
+
+Here, $ \eta $ is the learning rate.
