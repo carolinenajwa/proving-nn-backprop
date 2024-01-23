@@ -58,7 +58,15 @@ impl ArithmeticFunctions {
         println!("Test 1: Dot Expected: 32.00");
     }
 
-    pub fn matrix_multiply(&self, mat1: &[Vec<f64>], mat2: &[Vec<f64>]) -> Vec<Vec<f64>> {
+    pub fn matrix_multiply(&self, mat1: &[Vec<f64>], mat2: &[Vec<f64>]) -> Result<Vec<Vec<f64>>, &'static str> {
+        if ma1.is_empty() || mat2.is_empty() || mat1[0].is_empty() || mat2[0].is_empty() {
+            return Err("Input matrices cannot be empty");
+        }
+
+        if mat1[0].len() != mat2.len() {
+            return Err("Number of columns in mat1 must be equal to the number of rows in mat2")
+        }
+
         let mut result = Vec::new();
 
         for i in 0..mat1.len() {
@@ -66,12 +74,12 @@ impl ArithmeticFunctions {
             for j in 0..mat2[0].len() {
                 let row = &mat1[i];
                 let col: Vec<f64> = mat2.iter().map(|r| r[j]).collect();
-                row_result.push(self.dot_product(row, &col).unwrap()); // Assuming dot_product is implemented
+                row_result.push(self.dot_product(row, &col)?); // Error propagation
             }
             result.push(row_result);
         }
 
-        result
+        Ok(result)
     }
 
     pub fn compute_transpose(&self, matrix: &[Vec<f64>]) -> Vec<Vec<f64>> {
@@ -93,12 +101,52 @@ impl ArithmeticFunctions {
     }
 
     pub fn compute_factorial(&self, n: u64) -> u64 {
+        if n > 20 { // 20! is the largest factorial that fits into a u64
+            None
+        } else {
+            Some((1..=n).product())
+        }
         match n {
             0 | 1 => 1,
             _ => n * self.compute_factorial(n - 1),
         }
     }
 
+    // Enhanced compute_ipow to handle potential overflow
+    pub fn compute_ipow(&self, x: i32, y: u32) -> Option<i32> {
+        let mut res = 1;
+        for _ in 0..y {
+            res = res.checked_mul(x)?;
+        }
+        Some(res)
+    }
+    
+    // Enhanced compute_exp to handle large values and potential overflow
+    pub fn compute_exp(&self, z: f64, ftol: f64) -> f64 {
+        if z == 0.0 {
+            return 1.0;
+        }
+        if z < 0.0 {
+            return 1.0 / self.compute_exp(-z, ftol);
+        }
+
+        let mut res = 1.0;
+        let mut i = 1;
+        loop {
+            let term = match self.compute_ipow(z as i32, i) {
+                Some(ipow) => ipow as f64 / self.compute_factorial(i).unwrap_or(0) as f64,
+                None => break,
+            };
+
+            if term == 0.0 || term < ftol {
+                break;
+            }
+            res += term;
+            i += 1;
+        }
+        res
+    }
+    
 
 }
 
