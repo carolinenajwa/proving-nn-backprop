@@ -9,7 +9,7 @@ use core::result::Result;
 // 4. compute_factorial (done) 
 // 5. compute_ipow (done) 
 // 6. compute_exp (done) 
-// 7. 
+
 
 
 

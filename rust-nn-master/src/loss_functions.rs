@@ -3,6 +3,8 @@ use crate::arithm_functions::ArithmeticFunctions;
 
 struct LossFunctions;
 
+// UNTESTED (01/23/2023) 
+
 impl LossFunctions {
 
     /// Computes the sine of `x` using `n_terms` terms of the Taylor series expansion.

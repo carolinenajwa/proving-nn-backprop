@@ -3,6 +3,8 @@ use core::result::Result;
 use rand::Rng;
 use crate::arithm_functions::ArithmeticFunctions;
 
+// UNTESTED (01/23/2023) 
+
 pub trait AbstractLayer {
     fn forward_propagation(&self, input: Vec<Vec<f64>>) -> Vec<Vec<f64>>;
     fn backward_propagation(&self, output_error: Vec<Vec<f64>>, learning_rate: f64) -> Vec<Vec<f64>>;
