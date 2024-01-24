@@ -7,9 +7,10 @@ use core::result::Result;
 // 2. matrix_multiply (done) 
 // 3. compute_transpose (done) 
 // 4. compute_factorial (done) 
-// 5. compute_ipow
-// 6. compute_exp
-// 7. isinstance
+// 5. compute_ipow (done) 
+// 6. compute_exp (done) 
+
+
 
 
 

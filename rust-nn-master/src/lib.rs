@@ -1,13 +1,13 @@
 
 // Notes:
 // Functions to Test:
-// 1. dot_product (in progress)
-// 2. matrix_multiply (in progress)
-// 3. compute_transpose (in progress)
-// 4. compute_factorial (in progress)
-// 5. compute_ipow
-// 6. compute_exp
-// 7. isinstance
+// 1. dot_product (done) 
+// 2. matrix_multiply (done) 
+// 3. compute_transpose (done) 
+// 4. compute_factorial (done) 
+// 5. compute_ipow (done) 
+// 6. compute_exp (done) 
+// 7. isinstance (done) 
 
 mod arithm_functions;
 
